@@ -1,64 +1,68 @@
-var sandwich = {
-    bread:    "sourdough",
-    protein:  "london broil",
-    cheese:   "lacey swiss cheese",
-    toppings: ["romaine lettuce", "heirloom tomatoes", "horseradish sauce"]
-};
-    
-console.log(sandwich);
-
-function sandwichFactory(bread, protein, cheese, toppings) {
-    var sandwich = {};
-    sandwich.bread = bread;
-    sandwich.protein = protein;
-    sandwich.cheese = cheese;
-    sandwich.toppings = toppings;
-    return sandwich;
-}
-    
-var s1 = sandwichFactory("wheat", "turkey", "provolone", ["mustard", "fried onions", "arugula"]);
-console.log(s1);
-
-function pizzaOven(crustType, sauceType, cheeses, toppings) {
-    return {
-    crustType : crustType,
-    sauceType : sauceType,
-    cheeses : cheeses,
-    toppings : toppings
-};
+function alwaysHungry(arr) {
+    if (arr.includes("food")) {
+        console.log("yummy".repeat(arr.filter(item => item === "food").length));
+    } else {
+        console.log("I'm hungry");
+    }
 }
 
-var p1 = pizzaOven("deep dish", "traditional", ["mozzarella"], ["pepperoni", "sausage"]);
-console.log(p1);
+   
+alwaysHungry([3.14, "food", "pie", true, "food"]);
+// this should console log "yummy", "yummy"
+alwaysHungry([4, 1, 5, 7, 2]);
+// this should console log "I'm hungry"
 
-var p2 = pizzaOven("hand tossed", "marinara", ["mozzarella", "feta"], ["mushrooms", "olives", "onions"]);
-console.log(p2);
 
-var p3 = pizzaOven("thin crust", "tomato", ["mozzarella", "cheddar"], ["pepperoni", "mushrooms"]);
-console.log(p3);
+function highPass(arr, cutoff) {
+    var filteredArr = arr.filter(item => item > cutoff);
+    // your code here
+    return filteredArr;
+}
+var result = highPass([6, 8, 3, 10, -2, 5, 9], 5);
+console.log(result); // we expect back [6, 8, 10, 9]
 
-var p4 = pizzaOven("thick crust", "pesto", ["parmesan", "gouda"], ["chicken", "artichokes", "spinach"]);
-console.log(p4);
 
-function randomPizza() {
-    var crustTypes = ["deep dish", "hand tossed", "flat bread", "thin"],
-        sauceTypes = ["traditional", "marinara", "buffalo", "pesto"],
-        cheesesTypes = ["mozzarella", "feta", "cheddar"],
-        toppingsTypes = ["mushrooms", "olives", "onions", "pepperoni", "sausage"];
-    
-    var randomCrustTypes = crustTypes[Math.floor(Math.random() * crustTypes.length)],
-        randomsauceTypes = sauceTypes[Math.floor(Math.random() * sauceTypes.length)],
-        randomcheeses = cheesesTypes[Math.floor(Math.random() * cheesesTypes.length)],
-        randomtoppings = toppingsTypes[Math.floor(Math.random() * toppingsTypes.length)];
-    
-    return {
-      crustType: randomCrustTypes,
-      sauceType: randomsauceTypes,
-      cheeses: randomcheeses,
-      toppings: randomtoppings 
-    };
-    
-  }
-  var randomPizza1 = randomPizza();
-  
-  console.log(randomPizza1);
+
+function betterThanAverage(arr) {
+    var sum = 0;
+    for (var i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    var average = sum / arr.length;
+    // calculate the average
+    var count = 0
+    // count how many values are greated than the average
+    for (let j = 0; j < arr.length; j++) {
+        if (arr[j] > average) {
+            count++
+        }
+        
+    }
+    return count;
+}
+var result = betterThanAverage([6, 8, 3, 10, -2, 5, 9]);
+console.log(result); // we expect back 4
+
+
+function reverse(arr) {
+    return arr.reverse();
+}
+
+var result = reverse(["a", "b", "c", "d", "e"]);
+console.log(result); // Output: ["e", "d", "c", "b", "a"]
+
+
+function fibonacciArray(n) {
+    var fibArr = [0, 1];
+
+    for (var i = 2; i < n; i++) {
+        var nextFib = fibArr[i - 1] + fibArr[i - 2];
+        fibArr.push(nextFib);
+    }
+
+    return fibArr;
+}
+
+var result = fibonacciArray(10);
+console.log(result); // Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
